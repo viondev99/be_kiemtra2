@@ -57,6 +57,9 @@ class ChannelController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $channel = Channel::findOrFail($id);
+        $channel->update($request->all());
+        return response()->json($channel, 200);
     }
 
     /**
@@ -65,8 +68,8 @@ class ChannelController extends Controller
     public function destroy(string $id)
     {
         //
-        $employee = Channel::find($id);
-        $employee->delete();
+        $channel = Channel::find($id);
+        $channel->delete();
         return response()->json(null, 204);
     }
 }
