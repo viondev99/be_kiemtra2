@@ -20,9 +20,18 @@ class ChannelController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'salary' => 'required|numeric',
+        ]);
+
+        $channel = Channel::create($validatedData);
+
+        return response()->json($channel, 201);
     }
 
     /**
