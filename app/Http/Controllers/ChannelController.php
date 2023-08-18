@@ -24,9 +24,10 @@ class ChannelController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'salary' => 'required|numeric',
+            'ChannelName' => 'required|string|max:255',
+            'Description' => 'required|string|max:255',
+            'SubscriberCount' => 'required|numeric',
+            'URL' => 'required|string|max:255',
         ]);
 
         $channel = Channel::create($validatedData);
